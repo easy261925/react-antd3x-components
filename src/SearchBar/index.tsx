@@ -8,18 +8,18 @@ import formStyles from '../index.less';
 
 interface SearchBarProps {
   form: FormComponentProps['form']
-  handleButtons?: ReactNode
+  handleButtons?: ReactNode | null | undefined
   thread?: number
   colLayout?: LayoutInterface
   formItemLayout?: Object
-  formitems?: Array<FormItemsInterface>
+  formitems?: Array<FormItemsInterface | null | undefined>
   onReset?: () => void
-  onSearch: (values: any) => void
+  onSearch?: (values: any) => void
   searchLayout?: number
   btnLayout?: number
 }
 
-const SearchBar = (props: SearchBarProps) => {
+const SearchBar: React.FC<SearchBarProps> = props => {
   const [expand, setExpand] = useState(false);
   const {
     form: { getFieldDecorator, validateFields, resetFields },
@@ -87,9 +87,9 @@ const SearchBar = (props: SearchBarProps) => {
     const count = expand ? showFormItems.length : thread;
     if (showFormItems && showFormItems.length) {
       const newFormItems = showFormItems.map((item, i) => {
-        const newFormItemLayout = item.formItemLayout || formItemLayout
-        const newColLayout = item.colLayout || colLayout
-        if (item.valuePropName) {
+        const newFormItemLayout = item?.formItemLayout || formItemLayout
+        const newColLayout = item?.colLayout || colLayout
+        if (item?.valuePropName) {
           return (
             <Col {...newColLayout} key={i} style={{ display: i < count ? 'block' : 'none' }}>
               <Form.Item
@@ -113,15 +113,15 @@ const SearchBar = (props: SearchBarProps) => {
         return (
           <Col {...newColLayout} key={i} style={{ display: i < count ? 'block' : 'none' }}>
             <Form.Item
-              label={item.label}
+              label={item?.label}
               {...newFormItemLayout}
               className={formStyles.customzeFormItem}
-              style={item.style}
+              style={item?.style}
             >
-              {getFieldDecorator(item.field)(
-                React.cloneElement(item.content, {
-                  ...item.props,
-                  ...item.content.props,
+              {item && getFieldDecorator(item.field)(
+                React.cloneElement(item?.content, {
+                  ...item?.props,
+                  ...item?.content.props,
                 }),
               )}
             </Form.Item>
@@ -167,4 +167,4 @@ const SearchBar = (props: SearchBarProps) => {
   );
 };
 
-export default Form.create()(SearchBar);
+export default SearchBar;

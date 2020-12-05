@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Table, Icon, Row, Popover, Checkbox, Button, Tooltip } from 'antd';
+import { TableProps } from 'antd/lib/table';
 import { PageInterface, TableSize } from '../interface'
 import "../index.less";
 import { setItem, getItem } from '../utils/index'
@@ -12,21 +13,25 @@ interface Props {
   size?: TableSize
   dataSource?: Array<any>
   columns: Array<any>
-  onChange: () => void
+  onChange: (values: any) => void
   rowKey?: any,
   columnsFilter?: boolean
   cacheKey?: string
   option?: TableOptions
+  loading?: boolean
+  pagination?: PageInterface
 }
 
-const CustomTable: React.FC<Props> = React.forwardRef((props, ref: any) => {
+const CustomTable: React.FC<Props & TableProps<any>> = React.forwardRef((props, ref: any) => {
   const {
     size = 'middle',
     dataSource = [],
     columns = [],
     onChange = () => console.log('Table onChange'),
     rowKey,
-    option
+    option,
+    loading,
+    pagination,
   } = props;
 
   const [stateColumns, setStateColumns] = useState(columns)
@@ -143,6 +148,8 @@ const CustomTable: React.FC<Props> = React.forwardRef((props, ref: any) => {
       }
       <Table
         {...props}
+        loading={loading}
+        pagination={pagination}
         ref={ref}
         columns={stateColumns}
         size={size}

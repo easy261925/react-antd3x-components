@@ -39,7 +39,7 @@ export interface DrawerProps {
 interface CCDrawerProps {
   title?: string | FormTitleInterface | any
   visible?: boolean
-  formitems?: Array<FormItemsInterface>
+  formitems?: Array<FormItemsInterface | null | undefined>
   width?: number
   onClose?: () => void
   onSubmit?: (values: any) => void

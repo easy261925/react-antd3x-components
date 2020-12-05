@@ -14,7 +14,7 @@ interface CommonFormProps {
   form: FormComponentProps['form']
   colLayout?: LayoutInterface
   formItemLayout?: FormItemLayoutInterface
-  formitems?: Array<FormItemsInterface>
+  formitems?: Array<FormItemsInterface | null | undefined>
 }
 
 const Index: React.FC<CommonFormProps> = props => {
@@ -46,21 +46,21 @@ const Index: React.FC<CommonFormProps> = props => {
         .map((item, i) => {
           const newFormItemLayout = {
             ...formItemLayout,
-            ...item.formItemLayout,
+            ...item?.formItemLayout,
           };
           const newColLayout = {
             ...colLayout,
-            ...item.colLayout,
+            ...item?.colLayout,
           };
           const newStyle = {
             marginBottom: 10,
-            ...item.style,
+            ...item?.style,
           };
-          if (item.valuePropName) {
+          if (item?.valuePropName) {
             return (
               <Col key={i} {...newColLayout}>
                 <Form.Item
-                  label={item.label}
+                  label={item?.label}
                   {...newFormItemLayout}
                   className={formStyles.customzeFormItem}
                   style={newStyle}
@@ -80,7 +80,7 @@ const Index: React.FC<CommonFormProps> = props => {
               </Col>
             );
           }
-          if (item.type === 'date') {
+          if (item?.type === 'date') {
             let initialValue = null
             if (record && get(record, item.field)) {
               initialValue = moment(get(record, item.field))
@@ -113,12 +113,12 @@ const Index: React.FC<CommonFormProps> = props => {
           return (
             <Col key={i} {...newColLayout}>
               <Form.Item
-                label={item.label}
+                label={item?.label}
                 {...newFormItemLayout}
                 className={formStyles.customzeFormItem}
                 style={newStyle}
               >
-                {getFieldDecorator(item.field, {
+                {item && getFieldDecorator(item.field, {
                   initialValue: record
                     ? get(record, item.field)
                       ? get(record, item.field)
