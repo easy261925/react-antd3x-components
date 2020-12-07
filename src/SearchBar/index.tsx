@@ -167,4 +167,6 @@ const SearchBar: React.FC<SearchBarProps> = props => {
   );
 };
 
-export default SearchBar;
+const WrapperForm = Form.create<SearchBarProps>()(SearchBar);
+
+export default WrapperForm;
