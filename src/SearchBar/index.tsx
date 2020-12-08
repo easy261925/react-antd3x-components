@@ -17,6 +17,7 @@ interface SearchBarProps {
   onSearch?: (values: any) => void
   searchLayout?: number
   btnLayout?: number
+  loading?: boolean
 }
 
 const SearchBar: React.FC<SearchBarProps> = props => {
@@ -51,6 +52,7 @@ const SearchBar: React.FC<SearchBarProps> = props => {
         xxl: { span: 14 },
       },
     },
+    loading
   } = props;
 
   const {
@@ -142,7 +144,7 @@ const SearchBar: React.FC<SearchBarProps> = props => {
             <Col>
               {formitems.length !== 0 && (
                 <Fragment>
-                  <Button type="primary" onClick={handleSearch}>
+                  <Button type="primary" onClick={handleSearch} loading={loading}>
                     查询
               </Button>
                   <Button style={{ marginLeft: 10 }} onClick={handleReset}>

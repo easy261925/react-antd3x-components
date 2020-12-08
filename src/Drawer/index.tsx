@@ -1,5 +1,5 @@
 import React, { Fragment, ReactNode } from 'react';
-import { Drawer, Button, Row } from 'antd';
+import { Drawer, Button, Row, Spin } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { FormTitleInterface, FormItemsInterface, childrenTypeEnum } from '../interface'
 import './index.less';
@@ -50,6 +50,7 @@ interface CCDrawerProps {
   footer?: ReactNode
   childrenType?: childrenTypeEnum
   formmode: 'view' | 'create' | 'update'
+  loading?: boolean
 }
 
 const CCDrawer: React.FC<CCDrawerProps> = props => {
@@ -68,6 +69,7 @@ const CCDrawer: React.FC<CCDrawerProps> = props => {
     footer = null,
     childrenType = 'before',
     formmode = 'view',
+    loading,
     ...ext
   } = props;
 
@@ -127,18 +129,20 @@ const CCDrawer: React.FC<CCDrawerProps> = props => {
       bodyStyle={{ paddingBottom: 53 }}
       {...ext}
     >
-      {childrenType === 'before' && children}
-      {formitems && (
-        <CCForm formitems={formitems} disabled={disabled} record={record} form={form} />
-      )}
-      {childrenType === 'after' && children}
+      <Spin spinning={loading}>
+        {childrenType === 'before' && children}
+        {formitems && (
+          <CCForm formitems={formitems} disabled={disabled} record={record} form={form} />
+        )}
+        {childrenType === 'after' && children}
+      </Spin>
       <div style={{ width }} className='btnWrap'>
         {footer || (
           <Fragment>
             {formmode === 'view' ? <Button onClick={onClose}>关闭</Button>
               : <Row>
                 <Button onClick={onClose}>取消</Button>
-                <Button type="primary" className='margin' onClick={onOk}>
+                <Button type="primary" className='margin' onClick={onOk} loading={loading}>
                   确定
                   </Button>
               </Row>

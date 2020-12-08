@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { createBrowserHistory } from '/Users/wangxiaohui/Desktop/cc_code/cc-antd-components/node_modules/@umijs/runtime';
+import { createBrowserHistory } from '/Users/wangxiaohui/Desktop/cc_code/react-antd3x-components/node_modules/@umijs/runtime';
 
 let options = {
   "basename": "/"

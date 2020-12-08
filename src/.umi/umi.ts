@@ -4,8 +4,8 @@ import '@@/core/devScripts';
 import { plugin } from './core/plugin';
 import './core/pluginRegister';
 import { createHistory } from './core/history';
-import { ApplyPluginsType } from '/Users/wangxiaohui/Desktop/cc_code/cc-antd-components/node_modules/@umijs/runtime';
-import { renderClient } from '/Users/wangxiaohui/Desktop/cc_code/cc-antd-components/node_modules/@umijs/renderer-react/dist/index.js';
+import { ApplyPluginsType } from '/Users/wangxiaohui/Desktop/cc_code/react-antd3x-components/node_modules/@umijs/runtime';
+import { renderClient } from '/Users/wangxiaohui/Desktop/cc_code/react-antd3x-components/node_modules/@umijs/renderer-react/dist/index.js';
 import { getRoutes } from './core/routes';
 
 

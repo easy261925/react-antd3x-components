@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import { ApplyPluginsType } from '/Users/wangxiaohui/Desktop/cc_code/cc-antd-components/node_modules/@umijs/runtime';
+import { ApplyPluginsType } from '/Users/wangxiaohui/Desktop/cc_code/react-antd3x-components/node_modules/@umijs/runtime';
 import * as umiExports from './umiExports';
 import { plugin } from './plugin';
 
@@ -19,7 +19,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "src/Drawer/index.md",
-          "updatedTime": 1603350393000,
+          "updatedTime": 1604299273000,
           "slugs": [
             {
               "depth": 2,
@@ -41,7 +41,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "src/Form/index.md",
-          "updatedTime": 1603350393000,
+          "updatedTime": 1604299273000,
           "slugs": [
             {
               "depth": 2,
@@ -63,7 +63,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "src/Modal/index.md",
-          "updatedTime": 1603350393000,
+          "updatedTime": 1604299273000,
           "slugs": [
             {
               "depth": 2,
@@ -85,7 +85,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "src/SearchBar/index.md",
-          "updatedTime": 1603350393000,
+          "updatedTime": 1604299273000,
           "slugs": [
             {
               "depth": 2,
@@ -107,7 +107,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "src/Table/index.md",
-          "updatedTime": 1603350393000,
+          "updatedTime": 1604299273000,
           "slugs": [
             {
               "depth": 2,
@@ -129,7 +129,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/index.md",
-          "updatedTime": 1603350393000,
+          "updatedTime": 1604299273000,
           "slugs": [
             {
               "depth": 1,

@@ -3,18 +3,23 @@
 CCDrawer:
 
 ```tsx
-import React, { useState } from 'react';
-import { CCDrawer } from 'react-antd3x-components';
-import { Button, Input, Form, Switch, DatePicker } from 'antd';
+import React, { useState } from "react";
+import { CCDrawer } from "react-antd3x-components";
+import { Button, Input, Form, Switch, DatePicker, Select } from "antd";
 
 const Index = ({ form }: any) => {
   const [visible, setVisible] = useState(false);
   const onSubmit = (values: any) => {
-    console.log('onSubmit', values);
+    console.log("onSubmit", values);
     setVisible(false);
   };
 
-  const data = { username: '123', status: 0, abc: { username: 'abc' } };
+  const data = {
+    username: "123",
+    select: "0",
+    status: 0,
+    abc: { username: "abc" },
+  };
 
   return (
     <div>
@@ -22,47 +27,57 @@ const Index = ({ form }: any) => {
         新建
       </Button>
       <CCDrawer
-        title={{ formMode: 'create', label: '123' }}
+        title={{ formMode: "create", label: "123" }}
         visible={visible}
         form={form}
         onSubmit={onSubmit}
-        formmode="create"
+        formmode="update"
         formitems={[
           {
-            label: '用户名',
-            field: 'abc.username',
+            label: "用户名",
+            field: "abc.username",
             content: <Input placeholder="请输入用户名" />,
             rules: [
               {
                 required: true,
-                message: '请输入用户名',
+                message: "请输入用户名",
               },
             ],
           },
           {
-            label: '切换',
-            field: 'status',
-            valuePropName: 'checked',
+            label: "切换",
+            field: "status",
+            valuePropName: "checked",
             content: <Switch />,
             initialValue: 1,
           },
           {
-            label: '时间',
-            field: 'date',
+            label: "时间",
+            field: "date",
             content: (
-              <DatePicker placeholder="时间" style={{ width: '100%' }} />
+              <DatePicker placeholder="时间" style={{ width: "100%" }} />
             ),
             rules: [
               {
                 required: true,
-                message: '请输入时间',
+                message: "请输入时间",
               },
             ],
-            type: 'date',
+            type: "date",
           },
           {
-            label: '详情',
-            field: 'detail',
+            label: "选择",
+            field: "select",
+            content: (
+              <Select placeholder="请选择" style={{ width: "100%" }}>
+                <Select.Option value="0">选项一</Select.Option>
+                <Select.Option value="1">选项二</Select.Option>
+              </Select>
+            ),
+          },
+          {
+            label: "详情",
+            field: "detail",
             content: (
               <Input.TextArea
                 autoSize={{ minRows: 4, maxRows: 10 }}
@@ -74,10 +89,10 @@ const Index = ({ form }: any) => {
                 required: true,
                 validator(rule: any, value: string, callback: Function) {
                   if (!value) {
-                    callback('请输入详情');
+                    callback("请输入详情");
                   }
                   if (value && value.length > 100) {
-                    callback('内容长度不能超过100个字');
+                    callback("内容长度不能超过100个字");
                   }
                   callback();
                 },
