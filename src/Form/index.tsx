@@ -44,7 +44,6 @@ const Index: React.FC<CommonFormProps> = props => {
       const newFormItems = formitems
         .filter(i => i && !i.hideInForm)
         .map((item, i) => {
-          console.log('item', item)
           const newFormItemLayout = {
             ...formItemLayout,
             ...item?.formItemLayout,

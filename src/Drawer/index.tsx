@@ -69,7 +69,7 @@ const CCDrawer: React.FC<CCDrawerProps> = props => {
     footer = null,
     childrenType = 'before',
     formmode = 'view',
-    loading,
+    loading = false,
     ...ext
   } = props;
 
